@@ -12,8 +12,7 @@ steps:
 - name: Checkout repository
 uses: actions/checkout@v4
 
-# Step 2: Uses your secure token to log into Firebase and upload the
-project
+# Step 2: Uses your secure token to log into Firebase and upload the project
 - name: Deploy to Firebase Hosting
 uses: FirebaseExtended/action-hosting-deploy@v0
 with:
