@@ -1,22 +1,16 @@
-# This workflow activates every time a commit is pushed to your main branch
 name: Deploy to Firebase Hosting on merge
 on:
   push:
     branches:
       - main
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Tells GitHub to copy your repository files onto its virtual machine
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Step 2: Uses your secure token to log into Firebase and upload the project
-      - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: actions/checkout@v4
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: charity-70b66
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           channelId: live
+          projectId: charity-70b66
