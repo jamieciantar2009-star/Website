@@ -1,0 +1,211 @@
+/* ==========================================================================
+   1. GLOBAL RESET & BASE RULES
+   Clears default browser spacing so layouts render consistently everywhere.
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding doesn't accidentally change block widths */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f9fa; /* Light neutral gray canvas background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. REUSABLE HTML5 STRUCTURAL LAYOUT BLOCKS
+   These styles are applied identically to both the Home and Partners pages.
+   ========================================================================== */
+header {
+    background-color: #fff;
+    border-bottom: 2px solid #e1e4e6;
+    padding: 20px 5%;
+    display: flex;             /* Uses Flexbox to separate the logo and navbar */
+    justify-content: space-between; 
+    align-items: center;       /* Centers content vertically */
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0275d8;
+}
+
+/* Simulated brand square matching the layout requirements */
+.logo-placeholder {
+    width: 40px;
+    height: 40px;
+    background-color: #0275d8;
+    border-radius: 4px;
+}
+
+nav ul {
+    display: flex;             /* Lays out the navigation links side-by-side */
+    list-style: none;          /* Removes default bullet points */
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;     /* Removes standard hyperlink underlines */
+    color: #555;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    color: #0275d8;            /* Color feedback when a user hovers over a link */
+}
+
+/* The structural container managing the max boundary of content cards */
+main {
+    max-width: 1200px;
+    margin: 40px auto;         /* Centers the entire main container block */
+    padding: 0 20px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+    HOME PAGE:GRID COLLAGE LAYOUT 
+   Handles the asymmetrical 2-column layout grid.
+   ========================================================================== */
+.home-grid {
+    display: grid;
+    /* Sets up a 2-column track where the right column is 1.5x wider than the left */
+    grid-template-columns: 1fr 1.5fr; 
+    gap: 25px; /* Unified gap between all collage boxes */
+}
+
+/* Standard structural card container styling for the 4 quadrants */
+.grid-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #e1e4e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grid-card h2 {
+    color: #222;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 8px;
+}
+
+.grid-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;         /* Prevents images from stretching awkwardly */
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Groups the required image and text caption */
+figure {
+    margin-bottom: 15px;
+}
+
+/* Styling for the mandatory HTML5 figcaption add-on element */
+figcaption {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Horizontal social item list wrappers for Grid #4 */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.icon-placeholder {
+    width: 35px;
+    height: 35px;
+    background-color: #e1e4e6;
+    border-radius: 50%;        /* Makes the placeholders perfect circles */
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* Centers text inside the circle */
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   SECOND PAGE: GRID COLLAGE LAYOUT 
+   Handles the pyramid-style grid format.
+   ========================================================================== */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal columns side-by-side */
+    gap: 30px;
+}
+
+/* CRITICAL ELEMENT FOR THE PYRAMID STRUCTURE:
+   Forces Card #1 to stretch all the way from line 1 across 2 columns.
+*/
+.partner-card-1 {
+    grid-column: 1 / span 2;
+    justify-self: center;      /* Centers the item horizontally */
+    width: 50%;                /* Narrows the block so it mirrors the visual sheet */
+}
+
+/* Target card elements for the 3-grid collage */
+.partner-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e1e4e6;
+    text-align: center;
+    
+    /* MANDATORY SECOND-PAGE ADD-ON: CSS3 Drop Shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    /* MANDATORY SECOND-PAGE ADD-ON: CSS3 Transition for interactive feedback */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Smooth lift and shadow depth expansion when an item is hovered */
+.partner-card:hover {
+    transform: translateY(-5px); /* Moves card up by 5 pixels */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.partner-card h2 {
+    margin-bottom: 15px;
+}
+
+.partner-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.partner-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0275d8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.partner-card a:hover {
+    text-decoration: underline; /* Shows standard hyperlink feedback on hover */
+}
